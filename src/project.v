@@ -16,8 +16,9 @@ module tt_um_example (
     input  wire       rst_n     // reset_n - low to reset
 );
 
-  // All output pins must be assigned. If not used, assign to 0.
-  assign uo_out  = ui_in + uio_in;  // Example: ou_out is the sum of ui_in and uio_in
+  // bitwise or
+    assign uo_out[6:0]  = ui_in[6:0] | uio_in[6:0];//first 7 bits
+    assign uo_out[7]  = ^(ui_in[7]^uio_in[7]);
   assign uio_out = 0;
   assign uio_oe  = 0;
 
