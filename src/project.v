@@ -13,15 +13,12 @@ module tt_um_bitwiseOperator (
     input  wire       clk,      // clock
     input  wire       rst_n     // reset_n - low to reset
 );
-    // Bitwise OR for bits 0-6
-    assign uo_out[6:0] = ui_in[6:0] | uio_in[6:0]; // First 7 bits
-    
-    // For bit 7, it should be XOR of ui_in[7] and uio_in[7]
+    //actual bitwise operator
+    assign uo_out[6:0] = ui_in[6:0] | uio_in[6:0]; 
     assign uo_out[7] = ui_in[7] ^ uio_in[7];
     
-    // Set unused outputs to 0
-    assign uio_out = 8'h00;
-    assign uio_oe = 8'h00;
+    assign uio_out = 0;
+    assign uio_oe = 0;
     
     // Properly format the unused signals
     wire _unused_ok = &{1'b0, ena, clk, rst_n};
